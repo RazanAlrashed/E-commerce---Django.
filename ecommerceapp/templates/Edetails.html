@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-5">
+    <div class="row ">
+        <div class="col-lg-6">
+            <img src={{data.items.image.url}} class="rounded float-start mx-auto d-block" width="550px" height="500px">
+        </div>
+        <div class="col-lg-6">
+            <h2 class="fw-bold">{{data.items.nameitems}}</h2>
+            <h3 class="my-4">{{data.items.price}} SAR</h3>
+            <p class="mb-4">
+                {{data.items.description}}
+            </p>
+            <div class="d-flex gap-3 mb-4">
+                <input type="number" class="form-control" value="1" style="max-width: 80px;">
+                <button  onclick="add_to_cart({{data.id}})" type="button"  style="color: #CD5C08;" class='btn btn-light btn-outline-light'> Add To Cart</button>
+            </div>
+            <div>
+                <a href="{% url 'checkout' %}" class="btn btn-outline-secondary btn-sm" type="button">Pyment</a>
+                <a href="{% url 'Eitems' %}" class="btn btn-outline-secondary btn-sm" type="button">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

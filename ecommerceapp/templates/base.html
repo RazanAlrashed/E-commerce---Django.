@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Cairo' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    {% load static %}
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <title>ecommerce</title>
+</head>
+<body>
+    <style>
+        body {
+            font-family: 'Cairo';font-size: 22px;
+            background-color: #EAE4DD;
+        }
+    </style>
+    <header class="section-header">
+
+        <nav class="navbar navbar-dark navbar-expand p-0 bg-light">
+            <div class="container-fluid">
+                <ul class="navbar-nav d-none d-md-flex mr-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url '' %}" data-abc="true" style="color: #CD5C08;">Home</a></li>
+                </ul>
+                <ul class="navbar-nav d-flex align-items-center">
+                    <li class="nav-item">
+                        <div class="d-flex flex-row">
+                        <i class="bi bi-person" style="color: #CD5C08;"></i>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link d-flex align-items-center" data-abc="true"><span style="color: #CD5C08;">{{request.user}}</span><i class='bx bxs-chevron-down'></i></a>
+                    </li>
+              </ul> 
+            </div> 
+        </nav> 
+            
+            <section class="header-main border-bottom bg-white">
+                <div class="container-fluid">
+                    <div class="row p-2 pt-3 pb-3 d-flex align-items-center">
+                        <div class="col-md-2">
+                            <img  class="d-none d-md-flex" src="{% static 'js/images/logo.png' %}" width="80" height="80">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="d-flex form-inputs">
+                                <input class="form-control" type="text" placeholder="Search any product...">
+                                <i class="bx bx-search"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <div class="d-flex d-none d-md-flex flex-row align-items-center">
+                                <span  class="shop-bag"><i class='bx bxs-shopping-bag'></i></span>
+                                <div class="d-flex flex-column ms-2">
+                                    <a type="button" class="btn btn-primary position-relative" href="{% url 'showcart' %}">
+                                    <i class="bi bi-cart"></i>
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart" >
+                                        {{request.session.cart}}
+                                    </span>
+                                </a>
+                                </div>    
+                            </div>           
+                        </div>
+                    </div>
+                </div> 
+            </section>
+    </header> 
+    <main>
+    {%block content%}
+    {%endblock content%}
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{% static 'js\main.js' %}"></script>
+
+</body>
+</html>
